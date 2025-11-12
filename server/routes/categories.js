@@ -2,14 +2,27 @@
 const express = require('express');
 const router = express.Router();
 
-// Import the controller function
+// NOTE: We will secure the POST, PUT, and DELETE routes with the protect 
+// middleware later (e.g., protect, admin only check)
+
+// Import ALL necessary controller functions for Category CRUD
 const { 
-    createCategory 
-} = require('../controllers/categoryController'); // <-- Ensure this path is correct!
+    createCategory, 
+    getCategories,
+    updateCategory,
+    deleteCategory
+} = require('../controllers/categoryController'); // <-- Ensure all 4 are imported!
 
-// POST /api/categories
-router.post('/', createCategory); 
+// Routes without an ID
+router.route('/')
+    .post(createCategory)  // POST /api/categories (Create)
+    .get(getCategories);   // GET /api/categories (Read All)
 
-// Future Category CRUD routes will go here
+// Routes with an ID
+router.route('/:id')
+    // No .get(getCategoryById) is needed, as we can get all categories above,
+    // but you could add it if required later.
+    .put(updateCategory)    // PUT /api/categories/:id (Update)
+    .delete(deleteCategory); // DELETE /api/categories/:id (Delete)
 
 module.exports = router;
