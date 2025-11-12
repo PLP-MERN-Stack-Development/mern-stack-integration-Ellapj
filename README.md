@@ -1,3 +1,136 @@
+ MERN Blog ApplicationProject Overview
+ 
+ This is a full-stack blog application built using the MERN (MongoDB, Express, React, Node.js) stack. It provides complete user authentication and is structured to allow for scalable blog post and category management.The application uses an API-centric approach, with the frontend running on React (Vite) and the backend running on Express, connected to a MongoDB database.AspectTechnologyFrontendReact (Vite), React Router DOM, AxiosBackendNode.js, Express, express-async-handlerDatabaseMongoDB, MongooseAuthenticationJWT (JSON Web Tokens), bcryptjs for password hashingFeatures ImplementedThe current version includes a fully functional and debugged authentication system:
+ 🔐 User Authentication: Secure registration, login, and session management.
+ 👤 Registration: New users can create an account with unique usernames and emails. Passwords are securely hashed using bcryptjs.
+ 🔑 Login: Registered users can authenticate and receive a secure JWT for session persistence.🚪 Logout: Users can securely terminate their session, clearing the token from local storage.
+ 🧭 Protected Routing: The Navbar dynamically renders links based on the user's logged-in status.Setup InstructionsFollow these steps to get the application running locally on your machine.PrerequisitesNode.js (LTS version recommended)MongoDB instance (local or hosted via MongoDB Atlas)
+ 1. Clone the RepositoryBashgit clone <YOUR_REPOSITORY_URL>
+cd mern-blog-application
+2. Set up the Backend (Server)Navigate to the server directory and install dependencies:Bashcd server
+npm install
+Create .env File:Create a file named .env in the server directory and add your environment variables:Ini, TOML# server/.env
+
+# Replace <your_cluster_uri> with your MongoDB connection string
+MONGODB_URI = "mongodb+srv://<username>:<password>@<your_cluster_uri>/blogdb?retryWrites=true&w=majority"
+PORT = 5000
+JWT_SECRET = "your_secret_key_for_jwt_signing"
+Start the Server:Bashnpm run dev
+The server should start on port 5000.3. Set up the Frontend (Client)Open a new terminal tab/window, navigate to the client directory, and install dependencies:Bashcd ../client
+npm install
+Start the Client:Bashnpm run dev
+
+The React application will start, typically on port 5173. The application is configured to communicate with the backend running on port 5000.API Documentation (Authentication)
+The API endpoints are defined under the /api/auth base path.EndpointMethodDescriptionRequest BodySuccess Response/api/auth/registerPOST
+Registers a new user and returns a JWT.{ username, email, password }{ _id, username, email, token } (Status 201)/api/auth/loginPOSTAuthenticates a user and returns a JWT.{ email, password }{ _id, username, email, token }
+
+Registration page& login page <img width="1920" height="1080" alt="Screenshot 2025-11-12 121344" src="https://github.com/user-attachments/assets/f0433f7b-ded8-4e78-b65b-ef9324c57375" />
+
+Logout&home page <img width="1920" height="1080" alt="Screenshot 2025-11-12 121618" src="https://github.com/user-attachments/assets/f0433f7b-ded8-4e78-b65b-ef9324c57375" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # MERN Stack Integration Assignment
 
 This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
